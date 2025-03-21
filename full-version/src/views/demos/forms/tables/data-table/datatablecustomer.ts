@@ -1,0 +1,20 @@
+import type { Data } from '@db/pages/datatable/types'
+import avatar2 from '@images/avatars/avatar-2.png'
+
+const data: Data[] = [
+  {
+    responsiveId: '',
+    id: 95,
+    avatar: '',
+    fullName: 'Comercializadora del Norte S.A. de C.V.',
+    post: 'Distribuciones México S.A. de C.V.',
+    email: 'Benito Juárez, CDMX',
+    city: 'MX-123456',
+    startDate: 'Juan Pérez',
+    salary: 'Roma Norte',
+    age: '27',
+    experience: '2 Years',
+    status: 2,
+  },
+]
+export default data
