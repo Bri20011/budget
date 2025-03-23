@@ -4,7 +4,7 @@ export default [
     icon: { icon: 'bx-grid-alt' },
     children: [
       {
-        title: 'Ecommerce',
+        title: 'soy',
         icon: { icon: 'bx-cart' },
         children: [
           {

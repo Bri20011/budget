@@ -1,5 +1,5 @@
 export default [
   {
-  title: 'Blue Room',
+  title: 'Cotizacion',
   },
 ]

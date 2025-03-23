@@ -4,6 +4,7 @@ import NavBarI18n from '@core/components/I18n.vue'
 import { HorizontalNavLayout } from '@layouts'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import navItems from '@/navigation/horizontal'
+import img1 from '@/assets/images/logo-color.png'
 
 // Components
 import Footer from '@/layouts/components/Footer.vue'
@@ -22,11 +23,11 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
         to="/"
         class="app-logo d-flex align-center gap-x-2"
       >
-        <VNodeRenderer :nodes="themeConfig.app.logo" />
-
-        <h1 class="app-logo-title">
-          {{ themeConfig.app.title }}
-        </h1>
+        <VImg
+          :src="img1"
+          class="custom-img" width="140px" height="100px"
+        />
+        <!-- <VNodeRenderer :nodes="themeConfig.app.logo" /> -->
       </RouterLink>
     </template>
     <template #navbar>

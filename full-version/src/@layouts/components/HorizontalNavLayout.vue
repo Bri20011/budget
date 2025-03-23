@@ -21,11 +21,16 @@ const configStore = useLayoutConfigStore()
       :class="configStore.isNavbarBlurEnabled && 'header-blur'"
     >
       <div class="nav-links-container">
-        <H1>Cuenta</H1>
-        <H1>Nosotros</H1>
-        <H1>Catálogo</H1>
-        <H1>Contacto</H1>
-        <H1>Cerrar sesión</H1>
+        <slot name="logo" />
+
+        <div class="layout-horizontal-nav">
+          <div class="horizontal-nav-content-container">
+            <HorizontalNav :nav-items="navItems" />
+          </div>
+        </div>
+        <div class="navbar-slot-container">
+          <slot name="navbar" />
+        </div>
       </div>
     </div>
     <div
@@ -33,19 +38,20 @@ const configStore = useLayoutConfigStore()
       :class="configStore.isNavbarBlurEnabled && 'header-blur'"
     >
       <!-- 👉 Navbar -->
-      <div class="layout-navbar">
+      <!--
+        <div class="layout-navbar">
         <div class="navbar-content-container">
-          <slot name="logo" />
-          <VSpacer />
-          <div class="layout-horizontal-nav">
-            <div class="horizontal-nav-content-container">
-              <HorizontalNav :nav-items="navItems" />
-            </div>
-          </div>
-          <VSpacer />
-          <slot name="navbar" />
+        <VSpacer />
+        <div class="layout-horizontal-nav">
+        <div class="horizontal-nav-content-container">
+        <HorizontalNav :nav-items="navItems" />
         </div>
-      </div>
+        </div>
+        <VSpacer />
+        <slot name="navbar" />
+        </div>
+        </div>
+      -->
     </div>
 
     <!-- <main class="layout-page-content"> -->
@@ -68,11 +74,10 @@ const configStore = useLayoutConfigStore()
 @use "@layouts/styles/mixins";
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400&display=swap');
 
-
 .nav-links-container {
   display: flex;
   gap: 100px; /* Espaciado entre elementos */
-  justify-content: flex-end; /* Alinea los textos a la derecha */
+  justify-content: space-between; /* Alinea los textos a la derecha */
   align-items: center; /* Centra verticalmente */
   width: 100%; /* Asegura que ocupe todo el ancho */
   background-color:#FFEFE9;
@@ -82,7 +87,7 @@ const configStore = useLayoutConfigStore()
 }
 h1 {
     font-weight: normal; /* Elimina la negrita */
-    // font-family: 'Arial', sans-serif; 
+    // font-family: 'Arial', sans-serif;
     font-family: 'Exo', sans-serif;
     font-size: 15px; /* Ajusta el tamaño de la fuente si es necesario */
   }
@@ -124,6 +129,11 @@ h1 {
         }
       }
     }
+    .navbar-slot-container {
+        display: flex;
+        align-items: center; /* Alinea verticalmente */
+        gap: 10px; /* Espacio entre el slot y "Marcos" */
+}
 
     // 👉 Footer
     // Boxed content
@@ -157,5 +167,6 @@ h1 {
   .horizontal-nav-content-container {
     @include mixins.boxed-content(true);
   }
+
 }
 </style>

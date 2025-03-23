@@ -1,32 +1,58 @@
 export default [
   {
-    title: 'Spiga',
-    // icon: { icon: 'bx-home-smile' },
+    title: 'Catalogo',
     children: [
+      // {
+      //   title: 'Spiga',
+      //   to: 'dashboards-spiga',
+      // },
+      // {
+      //   title: 'Tamarindo',
+      //   to: 'dashboards-tamarindo',
+      // },
+      // {
+      //   title: 'Blue Room',
+      //   to: 'dashboards-blue-room',
+      // },
+      // {
+      //   title: 'Ashley Furniture',
+      //   to: 'dashboards-ashley',
+      // },
       {
-        title: 'Analytics',
-        to: 'dashboards-analytics',
-        icon: { icon: 'bx-pie-chart-alt' },
+        title: 'Spiga',
+        to: {
+          name: 'catalogo-catalogo',
+          params: {
+            catalogo: 'spiga',
+          },
+        },
       },
       {
-        title: 'CRM',
-        to: 'dashboards-crm',
-        icon: { icon: 'bx-cube' },
+        title: 'Tamarindo',
+        to: {
+          name: 'catalogo-catalogo',
+          params: {
+            catalogo: 'tamarindo',
+          },
+        },
       },
       {
-        title: 'Ecommerce',
-        to: 'dashboards-ecommerce',
-        icon: { icon: 'bx-cart' },
+        title: 'Blue Room',
+        to: {
+          name: 'catalogo-catalogo',
+          params: {
+            catalogo: 'blue-room',
+          },
+        },
       },
       {
-        title: 'Academy',
-        to: 'dashboards-academy',
-        icon: { icon: 'bx-book-open' },
-      },
-      {
-        title: 'Logistics',
-        to: 'dashboards-logistics',
-        icon: { icon: 'bx-car' },
+        title: 'Ashley Furniture',
+        to: {
+          name: 'catalogo-catalogo',
+          params: {
+            catalogo: 'ashley',
+          },
+        },
       },
     ],
   },
