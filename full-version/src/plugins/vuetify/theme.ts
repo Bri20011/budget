@@ -1,6 +1,7 @@
 import type { ThemeDefinition } from 'vuetify'
 
-export const staticPrimaryColor = '#f47d35(rgba(244,125,53,255))'
+// export const staticPrimaryColor = '#f47d35(rgba(244,125,53,255))'
+export const staticPrimaryColor = '#f47d35'
 export const staticPrimaryDarkenColor = '#f47d35'
 
 export const themes: Record<string, ThemeDefinition> = {
@@ -53,6 +54,7 @@ export const themes: Record<string, ThemeDefinition> = {
     },
 
     variables: {
+      'fontFamily': 'Exo, sans-serif',
       'code-color': '#d400ff',
       'overlay-scrim-background': '#22303E',
       'tooltip-background': '#22303E',
@@ -132,6 +134,7 @@ export const themes: Record<string, ThemeDefinition> = {
       'skin-bordered-surface': '#2B2C40',
     },
     variables: {
+      'fontFamily': 'Exo, sans-serif',
       'code-color': '#d400ff',
       'overlay-scrim-background': '#1D1D2A',
       'tooltip-background': '#E6E6F1',

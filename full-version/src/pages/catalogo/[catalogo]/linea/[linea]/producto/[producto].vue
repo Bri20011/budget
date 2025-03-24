@@ -13,11 +13,28 @@ const colors = ref([
 ])
 
 const selectedColor = ref(null)
-const images = ref([img3, img4]) // Solo dos imágenes pequeñas
+const images = ref([img3, img4])
 const selectedImage = ref(img1)
 
 const selectImage = img => {
   selectedImage.value = img
+}
+
+const selectedBody = ref(null)
+const quantity = ref(1)
+const metalIcons = [icons1, icons1, icons1, icons1, icons1, icons1]
+const maderaIcons = [icons2, icons2, icons2, icons2, icons2, icons2]
+
+const showCustomizationForm = ref(false)
+const formQuantity = ref(1)
+const formSelectedBody = ref(null)
+const formDescription = ref('')
+const formAmount = ref('')
+
+const openForm = () => {
+  formQuantity.value = quantity.value
+  formSelectedBody.value = selectedBody.value
+  showCustomizationForm.value = true
 }
 </script>
 
@@ -40,7 +57,6 @@ const selectImage = img => {
           class="rounded-lg"
         />
 
-        <!-- Miniaturas (solo 2) -->
         <VRow class="mt-3">
           <VCol
             v-for="(img, index) in images"
@@ -64,7 +80,7 @@ const selectImage = img => {
         md="6"
       >
         <p class="text-body-1 mb-1">
-          <strong>Materiales:</strong>
+          <strong class="font-weight-regular">Materiales:</strong>
         </p>
         <p class="text-body-2 text-grey-darken-1">
           Estructura perimetral de aluminio con patas en acero inoxidable.
@@ -84,7 +100,6 @@ const selectImage = img => {
           Perno de acero, deslizador de plástico.
         </p>
 
-        <!-- Precio -->
         <p class="text-h5 font-weight-bold text-orange-darken-2 mt-4">
           $1,700.85
         </p>
@@ -114,46 +129,362 @@ const selectImage = img => {
             </VCol>
           </VRow>
         </div>
+
+        <!-- Selector de Cantidad -->
         <VSelect
-          clearable
-          :items="['1', '2', '3', '4', '5', '6']"
+          v-model="quantity"
+          label="Cantidad"
+          :items="[1, 2, 3, 4, 5]"
           variant="solo-filled"
           outlined
           color="deep-purple darken-3"
           style="border-radius: 100px;"
         />
-        <h4 class="mt-2">
+
+        <!-- Selector de Cuerpos -->
+        <h4 class="mt-4">
           Cuerpos:
         </h4>
         <VSelect
-          clearable
+          v-model="selectedBody"
+          label="Cuerpo"
           :items="['Metal', 'Madera']"
           variant="solo-filled"
           outlined
           color="deep-purple darken-3"
           style="border-radius: 100px;"
         />
-        <h4 class="mt-2">
-          Colores:
-        </h4>
+
+        <!-- Mostrar iconos según el cuerpo seleccionado -->
+        <VRow v-if="selectedBody">
+          <VCol
+            v-for="(icon, index) in selectedBody === 'Metal' ? metalIcons : maderaIcons"
+            :key="index"
+            cols="auto"
+          >
+            <VImg
+              :src="icon"
+              height="50"
+              width="50"
+              class="mr-2"
+            />
+          </VCol>
+        </VRow>
+
         <!-- Botones de acción -->
-        <VBtn
-          color="yellow-darken-2"
-          class="mt-3"
-          block
+        <div class="mt-4">
+          <VBtn
+            color="yellow darken-2"
+            block
+            class="custom-button"
+            @click="openForm"
+          >
+            Personalizar Escritorio
+          </VBtn>
+          <VBtn
+            color="orange darken-3"
+            block
+            class="custom-button"
+          >
+            Agregar Cotización
+          </VBtn>
+        </div>
+      </VCol>
+    </VRow>
+
+    <VCardText class="subtitle-text d-flex justify-start">
+      Mas de esta Linea
+    </VCardText>
+    <VRow
+      justify="center"
+      gap="10"
+    >
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
         >
-          Personalizar Escritorio
-        </VBtn>
-        <VBtn
-          color="orange-darken-2"
-          class="mt-3"
-          block
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Direccion
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
         >
-          Agregar cotización
-        </VBtn>
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Operativa
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class=" card-text d-flex justify-center text-bold">
+            Alpha
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img4"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Operativa
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Direccion
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Operativa
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img3"
+            contain
+            class="custom-img"
+          />
+          <VCardText class=" card-text d-flex justify-center text-bold">
+            Alpha
+          </VCardText>
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
+        sm="3"
+        md="3"
+      >
+        <VCard
+          elevation="0"
+          class="image-card"
+        >
+          <VImg
+            :src="img4"
+            contain
+            class="custom-img"
+          />
+          <VCardText class="card-text d-flex justify-center text-bold">
+            Operativa
+          </VCardText>
+        </VCard>
       </VCol>
     </VRow>
   </VCardItem>
+
+  <!-- Formulario de Personalización -->
+  <VDialog
+    v-model="showCustomizationForm"
+    max-width="600px"
+  >
+    <VCard>
+      <VCardTitle class="text-h5 font-weight-bold">
+        Personalizar Escritorio
+      </VCardTitle>
+      <VCardText>
+        <VRow>
+          <!-- Imagen (lado izquierdo) -->
+          <VCol
+            md="5"
+            cols="12"
+            class="d-flex justify-center"
+          >
+            <VImg
+              :src="selectedImage"
+              height="200px"
+              contain
+              class="rounded-lg"
+            />
+          </VCol>
+
+          <!-- Selectores (lado derecho) -->
+          <VCol
+            md="7"
+            cols="12"
+            class="mt-5"
+          >
+            <VRow>
+              <VCol
+                cols="6"
+                class="mt-5"
+              >
+                <VSelect
+                  v-model="formSelector1"
+                  label="Selector 1"
+                  :items="['Opción 1', 'Opción 2']"
+                  outlined
+                />
+              </VCol>
+              <VCol
+                cols="6"
+                class="mt-5"
+              >
+                <VSelect
+                  v-model="formSelector2"
+                  label="Selector 2"
+                  :items="['Opción A', 'Opción B']"
+                  outlined
+                />
+              </VCol>
+            </VRow>
+
+            <VRow>
+              <VCol cols="6">
+                <VSelect
+                  v-model="formSelector3"
+                  label="Selector 3"
+                  :items="['Opción X', 'Opción Y']"
+                  outlined
+                />
+              </VCol>
+              <VCol cols="6">
+                <VSelect
+                  v-model="formSelector4"
+                  label="Selector 4"
+                  :items="['Opción M', 'Opción N']"
+                  outlined
+                />
+              </VCol>
+            </VRow>
+          </VCol>
+        </VRow>
+
+        <!-- Campo de descripción grande -->
+        <VRow>
+          <VCol cols="12">
+            <VTextarea
+              v-model="formDescription"
+              label="Descripción"
+              outlined
+            />
+          </VCol>
+        </VRow>
+
+        <!-- Campo de costo extra -->
+        <p class="mt-3 d-flex justify-center">
+          Costo estra:
+        </p>
+        <VRow class="d-flex justify-center mb-5">
+          <VCol cols="4">
+            <VTextField
+              type="number"
+              label="$0.00"
+              outlined
+            />
+          </VCol>
+        </VRow>
+
+        <!-- Botones de acción -->
+        <VRow class="mt-4 d-flex flex-column align-center">
+          <VCol cols="12">
+            <VBtn
+              color="green"
+              block
+              class="rounded-button"
+              @click="showCustomizationForm = false"
+            >
+              Agregar Cotización
+            </VBtn>
+          </VCol>
+          <VCol
+            cols="12"
+            class="mt-2"
+          >
+            <VBtn
+              color="red"
+              block
+              class="rounded-button"
+              @click="showCustomizationForm = false"
+            >
+              Cancelar
+            </VBtn>
+          </VCol>
+        </VRow>
+      </VCardText>
+    </VCard>
+  </VDialog>
 </template>
 
 <style scoped>
@@ -168,6 +499,11 @@ const selectImage = img => {
   width: 20px;
   height: 40px;
   border-radius: 12px;
-  min-width: auto; /* Evita que Vuetify haga el botón demasiado ancho */
+  min-width: auto;
+}
+.custom-button {
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 8px;
 }
 </style>

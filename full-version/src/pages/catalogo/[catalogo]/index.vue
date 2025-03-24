@@ -8,30 +8,6 @@ const titulo = ref('')
 const descripcion = ref('')
 
 const catalogos = {
-  '/catalogo/ashley': {
-    titulo: 'Ashley Furniture',
-    descripcion: 'Hecha un viztazo más de cerca a nuestras sillas',
-    catalogo: [{
-      nombre: 'Direccion',
-      img: img1,
-      linea: 'Ashley',
-    },
-    {
-      nombre: 'Operativa',
-      img: img3,
-      linea: 'Operativa',
-    },
-    {
-      nombre: 'Alpha',
-      img: img4,
-      linea: 'Alpha',
-    },
-    {
-      nombre: 'Operativa',
-      img: img3,
-      linea: 'Operativa',
-    }],
-  },
   '/catalogo/spiga': {
     titulo: 'Spiga',
     descripcion: 'Hecha un viztazo más de cerca a nuestras lineas',
@@ -98,6 +74,32 @@ const catalogos = {
       },
     ],
   },
+  '/catalogo/tamarindo': {
+    titulo: 'Tamarindo',
+    descripcion: 'Hecha un viztazo más de cerca a nuestras sillas',
+    catalogo: [
+      {
+        nombre: 'Dirección',
+        img: img3,
+        linea: 'Direccion',
+      },
+      {
+        nombre: 'Elemento',
+        img: img3,
+        linea: 'Tamarindo',
+      },
+      {
+        nombre: 'Operativas',
+        img: img3,
+        linea: 'Tamarindo',
+      },
+      {
+        nombre: 'Gamer',
+        img: img3,
+        linea: 'Tamarindo',
+      },
+    ],
+  },
   '/catalogo/blue-room': {
     titulo: 'Blue Room',
     descripcion: 'Hecha un viztazo más de cerca a nuestras sillas',
@@ -124,31 +126,29 @@ const catalogos = {
       },
     ],
   },
-  '/catalogo/tamarindo': {
-    titulo: 'Tamarindo',
+  '/catalogo/ashley': {
+    titulo: 'Ashley Furniture',
     descripcion: 'Hecha un viztazo más de cerca a nuestras sillas',
-    catalogo: [
-      {
-        nombre: 'Dirección',
-        img: img3,
-        linea: 'Direccion',
-      },
-      {
-        nombre: 'Elemento',
-        img: img3,
-        linea: 'Tamarindo',
-      },
-      {
-        nombre: 'Operativas',
-        img: img3,
-        linea: 'Tamarindo',
-      },
-      {
-        nombre: 'Gamer',
-        img: img3,
-        linea: 'Tamarindo',
-      },
-    ],
+    catalogo: [{
+      nombre: 'Direccion',
+      img: img1,
+      linea: 'Ashley',
+    },
+    {
+      nombre: 'Operativa',
+      img: img3,
+      linea: 'Operativa',
+    },
+    {
+      nombre: 'Alpha',
+      img: img4,
+      linea: 'Alpha',
+    },
+    {
+      nombre: 'Operativa',
+      img: img3,
+      linea: 'Operativa',
+    }],
   },
 }
 

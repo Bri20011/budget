@@ -27,10 +27,14 @@ const resolveNavItemComponent = (item: NavLink | NavGroup) => {
 </template>
 
 <style lang="scss">
+.layout-wrapper {
+  height: 100%;
+}
 .layout-wrapper.layout-nav-type-horizontal {
   .nav-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 </style>

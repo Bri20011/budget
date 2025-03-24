@@ -57,7 +57,7 @@ const login = async () => {
     // Redirect to `to` query if exist or redirect to index route
     // ❗ nextTick is required to wait for DOM updates and later redirect
     await nextTick(() => {
-      router.replace(route.query.to ? String(route.query.to) : '/')
+      router.replace(route.query.to ? String(route.query.to) : '/catalogo/spiga')
     })
   }
   catch (err) {
@@ -103,10 +103,7 @@ const onSubmit = () => {
           :src="authV2LoginIllustration"
           class="auth-illustration"
         >
-          <div
-            class="d-flex  justify-center align-center h-100 w-100 bg-red"
-            style="background-color: #FFFFFF20"
-          >
+          <div class="d-flex  justify-center align-center h-100 w-100">
             <VRow dense>
               <VCol
                 cols="12"
@@ -123,7 +120,7 @@ const onSubmit = () => {
               >
                 <VImg class="d-flex justify-center">
                   <h1 class="text-h1 text-center">
-                    ¡Bienvenido!
+                    <strong class="font-weight-bold">¡Bienvenido!</strong>
                   </h1>
                 </VImg>
               </VCol>
@@ -140,12 +137,13 @@ const onSubmit = () => {
     >
       <VCard
         flat
-        :max-width="500"
-        class="mt-12 mt-sm-0 pa-6"
+        max-width="500"
+        class="mt-12 mt-sm-0 pa-6 w-100"
       >
         <VCardText>
           <h4 class="text-h4 mb-1">
-            Inicia Sesión<span class="text-capitalize"> {{ themeConfig.app.title }} </span>
+            <strong class="font-weight-bold">Inicia Sesión</strong>
+            <!-- Inicia Sesión<span class="text-capitalize"> {{ themeConfig.app.title }} </span> -->
           </h4>
           <p class="mb-0">
           <!-- Please sign-in to your account and start the adventure -->
@@ -159,9 +157,12 @@ const onSubmit = () => {
             <VRow>
               <!-- email -->
               <VCol cols="12">
+                <p class="text-h6 mb-1">
+                  <strong class="font-weight-bold">Usuario</strong>
+                  <!-- Inicia Sesión<span class="text-capitalize"> {{ themeConfig.app.title }} </span> -->
+                </p>
                 <AppTextField
                   v-model="credentials.email"
-                  label="Usuario"
                   placeholder="johndoe@email.com"
                   type="email"
                   autofocus
@@ -173,9 +174,12 @@ const onSubmit = () => {
 
               <!-- password -->
               <VCol cols="12">
+                <p class="text-h6 mb-1">
+                  <strong class="font-weight-bold">Usuario</strong>
+                  <!-- Inicia Sesión<span class="text-capitalize"> {{ themeConfig.app.title }} </span> -->
+                </p>
                 <AppTextField
                   v-model="credentials.password"
-                  label="Contraseña"
                   placeholder="············"
                   :rules="[requiredValidator]"
                   :type="isPasswordVisible ? 'text' : 'password'"
@@ -192,14 +196,6 @@ const onSubmit = () => {
                     v-model="rememberMe"
                     label="Recordar cuenta"
                   />
-                <!--
-                  <RouterLink
-                  class="text-primary"
-                  :to="{ name: 'forgot-password' }"
-                  >
-                  Has olvidado tu contraseña?
-                  </RouterLink>
-                -->
                 </div>
 
                 <VBtn
@@ -207,7 +203,7 @@ const onSubmit = () => {
                   type="submit"
                   rounded="pill"
                 >
-                  Iniciar Sesion
+                  Iniciar Sesión
                 </VBtn>
               </VCol>
 
@@ -255,7 +251,13 @@ const onSubmit = () => {
 </template>
 
 <style lang="scss">
-@use "@core/scss/template/pages/page-auth";
-.rounded-pill {
+.auth-illustration::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Blanco con opacidad */
 }
 </style>

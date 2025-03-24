@@ -57,11 +57,13 @@ watch(() => route.path, () => {
     :popper-inline-end="childrenAtEnd"
   >
     <div class="nav-group-label">
-      <Component
+      <!--
+        <Component
         :is="layoutConfig.app.iconRenderer || 'div'"
         class="nav-item-icon"
         v-bind="item.icon || layoutConfig.verticalNav.defaultNavItemIconProps"
-      />
+        />
+      -->
       <Component
         :is="layoutConfig.app.i18n.enable ? 'i18n-t' : 'span'"
         v-bind="getDynamicI18nProps(item.title, 'span')"
@@ -69,11 +71,13 @@ watch(() => route.path, () => {
       >
         {{ item.title }}
       </Component>
-      <Component
+      <!--
+        <Component
         v-bind="layoutConfig.icons.chevronDown"
         :is="layoutConfig.app.iconRenderer || 'div'"
         class="nav-group-arrow"
-      />
+        />
+      -->
     </div>
 
     <template #content>
@@ -91,8 +95,10 @@ watch(() => route.path, () => {
 
 <style lang="scss">
 .layout-horizontal-nav {
+  width: 100%;
   .nav-group {
     .nav-group-label {
+      border-radius: 50px !important;
       display: flex;
       align-items: center;
       cursor: pointer;
